@@ -55,26 +55,22 @@ python.exe -m pip install tensorrt_dispatch--cp310-none-win_amd64.whl
 1. Install TensorFlow dengan GPU support:
 pip install tensorflow[and-cuda]
 
-text
 2. Atau install versi spesifik:
 pip install tensorflow==2.15.0
 
-text
 
 ## Verifikasi Instalasi
 
 ### Test TensorRT:
+```python
 import tensorrt as trt
 print("TensorRT version:", trt.version)
-
-text
 
 ### Test TensorFlow:
 import tensorflow as tf
 print("TensorFlow version:", tf.version)
 print("GPU devices:", tf.config.list_physical_devices('GPU'))
 
-text
 
 ### Test lengkap GPU Support:
 import tensorflow as tf
@@ -96,12 +92,12 @@ b = tf.constant([[1.0, 1.0], [0.0, 1.0]])
 c = tf.matmul(a, b)
 print("GPU computation result:")
 print(c)
-
-text
+```
 
 ## Konversi Model PyTorch ke TensorFlow
 
 ### Langkah 1: Export PyTorch ke ONNX
+```python
 import torch
 import torch.onnx
 
@@ -121,10 +117,10 @@ verbose=True,
 input_names=['input'],
 output_names=['output']
 )
-
-text
+```
 
 ### Langkah 2: Convert ONNX ke TensorRT Engine
+```python
 import tensorrt as trt
 import numpy as np
 
@@ -134,7 +130,6 @@ builder = trt.Builder(logger)
 network = builder.create_network(1 << int(trt.NetworkDefinitionCreationFlag.EXPLICIT_BATCH))
 parser = trt.OnnxParser(network, logger)
 
-text
 # Parse ONNX file
 with open(onnx_file_path, 'rb') as model:
     if not parser.parse(model.read()):
@@ -154,8 +149,7 @@ with open(engine_file_path, 'wb') as f:
 return serialized_engine
 Convert model
 build_engine('model.onnx', 'model.engine')
-
-text
+```
 
 ## Troubleshooting
 
@@ -173,13 +167,13 @@ text
 - Restart komputer setelah instalasi driver
 
 ## Dependencies yang Dibutuhkan
+```cmd
 tensorflow==2.15.0
 tensorrt
 numpy
 opencv-python
 pillow
-
-text
+```
 
 ## Struktur Project
 ```cmd
