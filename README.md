@@ -40,7 +40,8 @@ python.exe -m pip install tensorrt-*-cp310-none-win_amd64.whl
 ```
 
 (ganti `cp310` dengan versi Python Anda, misal `cp310` untuk Python 3.10)
-(ganti '*' dengan versi TensorRT, misal 10.10.0.31)
+
+(ganti `*` dengan versi TensorRT, misal 10.10.0.31)
 
 5. **Opsional**: Install TensorRT lean dan dispatch runtime:
 ```cmd
