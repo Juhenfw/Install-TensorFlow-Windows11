@@ -29,12 +29,12 @@ Tutorial instalasi TensorFlow pada lingkungan Windows 10 atau di atasnya. Pada R
 C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v12.1\bin
 ```
 3. **Paste semua file DLL** yang sudah di-copy dari TensorRT ke folder `bin` CUDA
-<img src="https://github.com/Juhenfw/Install-TensorFlow-Windows11/blob/eb1f985b2469e691114e2bf0b7da88a01cc1ca94/pic/pathtensorrt.png" width="600" height="350">
+<img src="https://github.com/Juhenfw/Install-TensorFlow-Windows11/blob/main/pic/pathcuda.png" width="600" height="400">
 5. Ini adalah metode yang lebih mudah daripada menambahkan PATH environment variable
 
 ## Langkah Keempat - Install TensorRT Python Package
 1. Buka Command Prompt atau PowerShell
-2. Masuk ke dalam virtual environment, jika belum ada
+2. Masuk ke dalam virtual environment, jika belum ada ketik:
 ```cmd
 python -m venv pytorch-tensorflow-env
 ```
@@ -42,16 +42,22 @@ python -m venv pytorch-tensorflow-env
 ```cmd
 pytorch-tensorflow-env\Scripts\activate
 ```
+atau
+```cmd
+[ganti dengan nama vitual environment Anda]\Scripts\activate
+```
 4. Navigasi ke folder TensorRT yang sudah di-extract
 5. Masuk ke folder `python`
+<img src="https://github.com/Juhenfw/Install-TensorFlow-Windows11/blob/main/pic/pythontensorrt.png" width="600" height="450">
 6. Install TensorRT wheel file sesuai versi Python Anda:
+
 ```cmd
 python.exe -m pip install tensorrt-*-cp310-none-win_amd64.whl
 ```
 
-(ganti `cp310` dengan versi Python Anda, misal `cp310` untuk Python 3.10)
+   (ganti `cp310` dengan versi Python Anda, misal `cp310` untuk Python 3.10)
 
-(ganti `*` dengan versi TensorRT, misal 10.10.0.31)
+   (ganti `*` dengan versi TensorRT, misal 10.10.0.31)
 
 contoh lengkapnya:
 ```cmd
@@ -65,6 +71,7 @@ python.exe -m pip install tensorrt_dispatch--cp310-none-win_amd64.whl
 ```
 
 ## Langkah Kelima - Install TensorFlow
+### (Opsional jika hanya Konversi Model PyTorch ke TensorFlow)
 1. Install TensorFlow dengan GPU support:
 ```cmd
 pip install tensorflow==2.10.0
@@ -165,6 +172,14 @@ with open(engine_file_path, 'wb') as f:
 return serialized_engine
 Convert model
 build_engine('model.onnx', 'model.engine')
+```
+
+### Langkah 3: Convert PyTorch ke TensorRT Engine secara Langsung
+```python
+from ultralytics import YOLO
+
+model = YOLO('yolov8n.pt')
+model.export(format='engine', device = 0)
 ```
 
 ## Troubleshooting
