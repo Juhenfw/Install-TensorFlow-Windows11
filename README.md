@@ -32,9 +32,17 @@ C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v12.1\bin
 
 ## Langkah Keempat - Install TensorRT Python Package
 1. Buka Command Prompt atau PowerShell
-2. Navigasi ke folder TensorRT yang sudah di-extract
-3. Masuk ke folder `python`
-4. Install TensorRT wheel file sesuai versi Python Anda:
+2. Masuk ke dalam virtual environment, jika belum ada
+```cmd
+python -m venv pytorch-tensorflow-env
+```
+3. Aktifkan virtual environment, contoh:
+```cmd
+pytorch-tensorflow-env\Scripts\activate
+```
+4. Navigasi ke folder TensorRT yang sudah di-extract
+5. Masuk ke folder `python`
+6. Install TensorRT wheel file sesuai versi Python Anda:
 ```cmd
 python.exe -m pip install tensorrt-*-cp310-none-win_amd64.whl
 ```
@@ -43,20 +51,26 @@ python.exe -m pip install tensorrt-*-cp310-none-win_amd64.whl
 
 (ganti `*` dengan versi TensorRT, misal 10.10.0.31)
 
-5. **Opsional**: Install TensorRT lean dan dispatch runtime:
+contoh lengkapnya:
+```cmd
+python.exe -m pip install tensorrt-10.10.0.31-cp310-none-win_amd64.whl
+```
+
+7. **Opsional**: Install TensorRT lean dan dispatch runtime:
 ```cmd
 python.exe -m pip install tensorrt_lean--cp310-none-win_amd64.whl
 python.exe -m pip install tensorrt_dispatch--cp310-none-win_amd64.whl
 ```
 
 ## Langkah Kelima - Install TensorFlow
-1. Masuk ke dalam virtual environment
-
 1. Install TensorFlow dengan GPU support:
-pip install tensorflow[and-cuda]
-
-2. Atau install versi spesifik:
-pip install tensorflow==2.15.0
+```cmd
+pip install tensorflow==2.10.0
+```
+2. Atau install tensorflow-gpu secara eksplisit
+```cmd
+pip install tensorflow-gpu==2.10.0
+```
 
 
 ## Verifikasi Instalasi
