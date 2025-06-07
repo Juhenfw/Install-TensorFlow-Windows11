@@ -204,6 +204,9 @@ tensorrt
 numpy
 opencv-python
 pillow
+protobuf==3.20.3
+onnx
+onnxruntime
 ```
 
 ## Struktur Project
