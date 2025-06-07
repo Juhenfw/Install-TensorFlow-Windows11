@@ -21,6 +21,7 @@ Tutorial instalasi TensorFlow pada lingkungan Windows 10 atau di atasnya. Pada R
 3. Setelah extract, akan muncul folder `TensorRT-10.x.x.x`
 4. Buka folder tersebut dan masuk ke folder `lib`
 5. **Copy semua file DLL** yang ada di dalam folder `lib`
+<img src="https://github.com/Juhenfw/Install-TensorFlow-Windows11/blob/eb1f985b2469e691114e2bf0b7da88a01cc1ca94/pic/pathtensorrt.png" width="600" height="350">
 
 ## Langkah Ketiga - Copy DLL lalu Paste ke CUDA Directory
 1. Buka File Explorer dan navigasi ke direktori instalasi CUDA:
@@ -28,7 +29,8 @@ Tutorial instalasi TensorFlow pada lingkungan Windows 10 atau di atasnya. Pada R
 C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v12.1\bin
 ```
 3. **Paste semua file DLL** yang sudah di-copy dari TensorRT ke folder `bin` CUDA
-4. Ini adalah metode yang lebih mudah daripada menambahkan PATH environment variable
+<img src="https://github.com/Juhenfw/Install-TensorFlow-Windows11/blob/eb1f985b2469e691114e2bf0b7da88a01cc1ca94/pic/pathtensorrt.png" width="600" height="350">
+5. Ini adalah metode yang lebih mudah daripada menambahkan PATH environment variable
 
 ## Langkah Keempat - Install TensorRT Python Package
 1. Buka Command Prompt atau PowerShell
