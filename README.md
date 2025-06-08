@@ -185,7 +185,7 @@ model.export(format='engine', device = 0)
 ## Troubleshooting
 
 ### Error "DLL load failed":
-- Pastikan semua DLL TensorRT sudah di-copy ke folder CUDA bin[1]
+- Pastikan semua DLL TensorRT sudah di-copy ke folder CUDA bin
 - Restart Command Prompt/PowerShell setelah instalasi
 
 ### Error "No module named 'tensorrt'":
