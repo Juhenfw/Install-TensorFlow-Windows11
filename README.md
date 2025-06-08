@@ -301,5 +301,6 @@ Jika Anda menemukan masalah atau ingin berkontribusi, silakan buat *issue* atau 
 MIT License
 
 ---
+Jika Anda ingin mengakses dan mencoba *Test Code*: [Klik Di sini](https://github.com/Juhenfw/Install-TensorFlow-Windows11/tree/main/src)
 
 **Happy Coding! 🚀**
