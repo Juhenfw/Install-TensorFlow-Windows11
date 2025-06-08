@@ -80,7 +80,14 @@ pip install tensorflow==2.10.0
 ```cmd
 pip install tensorflow-gpu==2.10.0
 ```
-
+3. Downgrade NumPy ke Versi 1.x
+```cmd
+pip install "numpy<2.0"
+```
+Atau lebih spesifik:
+```cmd
+pip install numpy==1.24.3
+```
 
 ## Verifikasi Instalasi
 
