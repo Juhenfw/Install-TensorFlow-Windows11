@@ -1,104 +1,104 @@
 # **Install TensorFlow di Windows 11**
-GUIDE
+A guide to install TensorFlow on Windows 10 or later environments. This repository also explains how to convert PyTorch models (.pt) to TensorFlow models (.onnx & .engine).
 
-## **Daftar Isi**
-1. [Spesifikasi pada Perangkat yang Saya Gunakan](#spesifikasi-pada-perangkat-yang-saya-gunakan)
-2. [Langkah Awal: Instalasi TensorRT](#langkah-awal-instalasi-tensorrt)
-   - Unduh NVIDIA TensorRT
-   - Extract File TensorRT]
-   - Copy DLL File ke CUDA Directory
-3. [Langkah Kedua: Install TensorRT Python Package](#langkah-kedua-install-tensorrt-python-package)
-   - Membuat Virtual Environment
-   - Instal TensorRT Python Package
-4. [Langkah Ketiga: Install TensorFlow](#langkah-ketiga-install-tensorflow)
-   - Install TensorFlow dengan GPU Support
-   - Downgrade NumPy (Opsional)
-5. [Verifikasi Instalasi](#verifikasi-instalasi)
-   - Verifikasi TensorRT
-   - Verifikasi TensorFlow
-   - Verifikasi Dukungan GPU
-6. [Konversi Model PyTorch ke TensorFlow](#konversi-model-pytorch-ke-tensorflow)
-   - Export PyTorch ke ONNX
-   - Konversi ONNX ke TensorRT Engine
-   - Konversi Langsung dari PyTorch ke TensorRT Engine
+## **Table of Contents**
+1. [Specifications of the Hardware I Used](#specifications-of-the-hardware-i-used)
+2. [Step 1: Installing TensorRT](#step-1-installing-tensorrt)
+   - Download NVIDIA TensorRT
+   - Extract TensorRT Files
+   - Copy DLL Files to CUDA Directory
+3. [Step 2: Install TensorRT Python Package](#step-2-install-tensorrt-python-package)
+   - Create a Virtual Environment
+   - Install TensorRT Python Package
+4. [Step 3: Install TensorFlow](#step-3-install-tensorflow)
+   - Install TensorFlow with GPU Support
+   - Downgrade NumPy (Optional)
+5. [Verify Installation](#verify-installation)
+   - Verify TensorRT
+   - Verify TensorFlow
+   - Verify GPU Support
+6. [Convert PyTorch Model to TensorFlow](#convert-pytorch-model-to-tensorflow)
+   - Export PyTorch to ONNX
+   - Convert ONNX to TensorRT Engine
+   - Directly Convert from PyTorch to TensorRT Engine
 7. [Troubleshooting](#troubleshooting)
-8. [Dependencies yang Dibutuhkan](#dependencies-yang-dibutuhkan)
-9. [Struktur Project](#struktur-project)
-10. [Referensi](#referensi)
-11. [Kontribusi](#kontribusi)
-12. [Lisensi](#lisensi)
+8. [Required Dependencies](#required-dependencies)
+9. [Project Structure](#project-structure)
+10. [References](#references)
+11. [Contributions](#contributions)
+12. [License](#license)
 
 ---
 
-## **Spesifikasi pada Perangkat yang Saya Gunakan**
+## **Specifications of the Hardware I Used**
 - **OS**: Windows 11
-- **GPU**: NVIDIA RTX 4060 dengan versi driver terbaru
-- **CUDA**: Versi 12.1
-- **Python**: Versi 3.10
-- **TensorRT**: Versi 10
+- **GPU**: NVIDIA RTX 4060 with the latest driver
+- **CUDA**: Version 12.1
+- **Python**: Version 3.10
+- **TensorRT**: Version 10
 
 ---
 
-## **Langkah Awal: Instalasi TensorRT**
+## **Step 1: Installing TensorRT**
 
-### 1. **Unduh NVIDIA TensorRT**
-   - Kunjungi website resmi TensorRT:
+### 1. **Download NVIDIA TensorRT**
+   - Visit the official TensorRT website:
      https://developer.nvidia.com/tensorrt/download
      
-   - Pilih versi TensorRT yang sesuai dengan kebutuhan (misal: TensorRT 10).
-   - Setujui ketentuan dan pilih versi terbaru dari TensorRT.
-   - Pada bagian *Zip Packages for Windows*, klik "TensorRT 10.x GA for Windows 10, 11, Server 2022 and CUDA 12.0 to 12.9 ZIP Package" (sesuaikan dengan CUDA versi yang digunakan).
+   - Choose the appropriate version of TensorRT (e.g., TensorRT 10).
+   - Agree to the terms and select the latest version of TensorRT.
+   - Under *Zip Packages for Windows*, click "TensorRT 10.x GA for Windows 10, 11, Server 2022 and CUDA 12.0 to 12.9 ZIP Package" (adjust according to your CUDA version).
 
-### 2. **Extract File TensorRT**
-   - Buka *File Explorer* dan navigasi ke lokasi unduhan TensorRT.
-   - Extract file yang telah diunduh.
-   - Setelah extract, akan muncul folder `TensorRT-10.x.x.x`.
-   - Buka folder tersebut dan masuk ke folder `lib`.
+### 2. **Extract TensorRT Files**
+   - Open *File Explorer* and navigate to the TensorRT download location.
+   - Extract the downloaded file.
+   - After extraction, a folder `TensorRT-10.x.x.x` will appear.
+   - Open that folder and go to the `lib` folder.
 
-### 3. **Copy DLL File ke CUDA Directory**
-   - **Copy semua file DLL** yang ada di folder `lib` dan paste ke direktori CUDA:
+### 3. **Copy DLL Files to CUDA Directory**
+   - **Copy all the DLL files** from the `lib` folder and paste them into the CUDA directory:
      ```cmd
      C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v12.1\bin
      ```
-     Folder `lib`:
+     `lib` folder:
      
      <img src="https://github.com/Juhenfw/Install-TensorFlow-Windows11/blob/eb1f985b2469e691114e2bf0b7da88a01cc1ca94/pic/pathtensorrt.png" width="600" height="350">
      
-     Direktori CUDA:
+     CUDA directory:
      
      <img src="https://github.com/Juhenfw/Install-TensorFlow-Windows11/blob/main/pic/pathcuda.png" width="600" height="400">
 
-   - **Catatan**: Ini adalah metode yang lebih mudah daripada menambahkan *PATH environment variable* secara manual.
+   - **Note**: This method is easier than manually adding the *PATH environment variable*.
 
 ---
 
-## **Langkah Kedua: Install TensorRT Python Package**
+## **Step 2: Install TensorRT Python Package**
 
-### 1. **Membuat Virtual Environment**
-   - Buka Command Prompt atau PowerShell, lalu buat virtual environment baru:
+### 1. **Create a Virtual Environment**
+   - Open Command Prompt or PowerShell, and create a new virtual environment:
      ```cmd
      python -m venv pytorch-tensorflow-env
      ```
 
-   - Aktifkan virtual environment:
+   - Activate the virtual environment:
      ```cmd
      pytorch-tensorflow-env\Scripts\activate
      ```
 
-### 2. **Instal TensorRT Python Package**
-   - Navigasi ke folder TensorRT yang sudah di-extract, lalu masuk ke folder `python`.
+### 2. **Install TensorRT Python Package**
+   - Navigate to the extracted TensorRT folder, then enter the `python` folder.
      
      <img src="https://github.com/Juhenfw/Install-TensorFlow-Windows11/blob/main/pic/pythontensorrt.png" width="600" height="450">
-   - Install file *wheel* TensorRT sesuai dengan versi Python Anda:
+   - Install the TensorRT wheel file according to your Python version:
      ```cmd
      python.exe -m pip install tensorrt-*-cp310-none-win_amd64.whl
      ```
-     Ganti `*` dengan versi TensorRT, misal:
+     Replace `*` with the TensorRT version, for example:
      ```cmd
      python.exe -m pip install tensorrt-10.10.0.31-cp310-none-win_amd64.whl
      ```
 
-   - **Opsional**: Install TensorRT lean dan dispatch runtime:
+   - **Optional**: Install TensorRT lean and dispatch runtime:
      ```cmd
      python.exe -m pip install tensorrt_lean--cp310-none-win_amd64.whl
      python.exe -m pip install tensorrt_dispatch--cp310-none-win_amd64.whl
@@ -106,42 +106,43 @@ GUIDE
 
 ---
 
-## **Langkah Ketiga: Install TensorFlow**
+## **Step 3: Install TensorFlow**
 
-### 1. **Install TensorFlow dengan GPU Support**
-   - Install TensorFlow dengan dukungan GPU:
+### 1. **Install TensorFlow with GPU Support**
+   - Install TensorFlow with GPU support:
      ```cmd
      pip install tensorflow==2.10.0
      ```
 
-### 2. **Downgrade NumPy (Opsional)**
-   - Beberapa versi TensorFlow membutuhkan NumPy versi tertentu. Jika perlu, downgrade NumPy ke versi 1.x:
+### 2. **Downgrade NumPy (Optional)**
+   - Some versions of TensorFlow require a specific version of NumPy. If needed, downgrade NumPy to version 1.x:
      ```cmd
      pip install "numpy<2.0"
      ```
 
 ---
 
-## **Verifikasi Instalasi**
+## **Verify Installation**
 
-### 1. **Verifikasi TensorRT**
+### 1. **Verify TensorRT**
    ```python
    import tensorrt as trt
    print("TensorRT version:", trt.version)
    ```
 
-### 2. **Verifikasi TensorFlow**
+### 2. **Verify TensorFlow**
    ```python
    import tensorflow as tf
    print("TensorFlow version:", tf.version)
    print("GPU devices:", tf.config.list_physical_devices('GPU'))
+
    ```
 
-### 3. **Verifikasi Dukungan GPU**
+### 3. **Verify GPU Support**
    ```python
    import tensorflow as tf
    import tensorrt as trt
-
+   
    print("=" * 50)
    print("SYSTEM CHECK")
    print("=" * 50)
@@ -149,8 +150,8 @@ GUIDE
    print("TensorRT version:", trt.version)
    print("GPU available:", len(tf.config.list_physical_devices('GPU')) > 0)
    print("CUDA built with TensorFlow:", tf.test.is_built_with_cuda())
-
-   **Test perhitungan sederhana pada GPU:**
+   
+   **Test simple computation on GPU:**
    if tf.config.list_physical_devices('GPU'):
        with tf.device('/GPU:0'):
            a = tf.constant([[1.0, 2.0], [3.0, 4.0]])
@@ -158,25 +159,26 @@ GUIDE
            c = tf.matmul(a, b)
            print("GPU computation result:")
            print(c)
+
    ```
 
 ---
 
-## **Konversi Model PyTorch ke TensorFlow**
+## **Convert PyTorch Model to TensorFlow**
 
-### **Langkah 1: Export PyTorch ke ONNX**
+### **Step 1: Export PyTorch to ONNX**
    ```python
    import torch
    import torch.onnx
-
-   # Load model PyTorch
+   
+   # Load PyTorch model
    model = torch.load('model.pt')
    model.eval()
-
-   # Membuat dummy input
+   
+   # Create dummy input
    dummy_input = torch.randn(1, 3, 224, 224)
-
-   # Export ke ONNX
+   
+   # Export to ONNX
    torch.onnx.export(
        model,
        dummy_input,
@@ -187,55 +189,56 @@ GUIDE
    )
    ```
 
-### **Langkah 2: Konversi ONNX ke TensorRT Engine**
+### **Step 2: Convert ONNX to TensorRT Engine**
    ```python
    import tensorrt as trt
    import numpy as np
-
+   
    def build_engine(onnx_file_path, engine_file_path):
        logger = trt.Logger(trt.Logger.WARNING)
        builder = trt.Builder(logger)
        network = builder.create_network(1 << int(trt.NetworkDefinitionCreationFlag.EXPLICIT_BATCH))
        parser = trt.OnnxParser(network, logger)
-
-       # Parsing file ONNX
+   
+       # Parsing ONNX file
        with open(onnx_file_path, 'rb') as model:
            if not parser.parse(model.read()):
                print('ERROR: Failed to parse the ONNX file.')
                return None
-
-       # Membangun engine
+   
+       # Building engine
        config = builder.create_builder_config()
        config.set_memory_pool_limit(trt.MemoryPoolType.WORKSPACE, 1 << 30)  # 1GB
-
+   
        serialized_engine = builder.build_serialized_network(network, config)
-
-       # Menyimpan engine ke file
+   
+       # Saving engine to file
        with open(engine_file_path, 'wb') as f:
            f.write(serialized_engine)
-
+   
        return serialized_engine
-
-   # Konversi model
+   
+   # Convert model
    build_engine('model.onnx', 'model.engine')
    ```
 
-### **Langkah 3: Konversi Langsung dari PyTorch ke TensorRT Engine**
+### **Step 3: Convert Directly from PyTorch to TensorRT Engine**
    ```python
    from ultralytics import YOLO
 
    model = YOLO('yolo11s.pt')
-
-   # Export dengan optimasi maksimal untuk kecepatan
+   
+   # Export with maximum optimization for speed
    model.export(
        format='engine',
        device=0,
-       half=True,           # FP16 untuk kecepatan
-       batch=32,           # Ukuran batch untuk throughput
-       workspace=4,        # Memori workspace (GB)
-       imgsz=640,          # Ukuran input
+       half=True,          # FP16 for speed
+       batch=32,           # Adjust Batch size for throughput
+       workspace=4,        # Workspace memory (GB)
+       imgsz=640,          # Input size
        verbose=False
    )
+
    ```
 
 ---
@@ -243,21 +246,21 @@ GUIDE
 ## **Troubleshooting**
 
 ### **Error "DLL load failed":**
-   - Pastikan semua file DLL TensorRT sudah dicopy ke folder `bin` CUDA.
+   - Make sure all TensorRT DLL files are copied to the `bin` folder of CUDA.
    - Restart Command Prompt/PowerShell setelah instalasi.
 
 ### **Error "No module named 'tensorrt'":**
-   - Pastikan file *wheel* TensorRT sudah ter-install dengan benar.
-   - Cek apakah versi Python yang digunakan sesuai dengan file *wheel*.
+   - Ensure the TensorRT wheel file is installed correctly.
+   - Check if your Python version matches the wheel file version.
 
-### **GPU Tidak Terdeteksi:**
-   - Pastikan driver NVIDIA terbaru sudah terinstal.
-   - Verifikasi bahwa CUDA versi 12.1 sudah terpasang dengan benar.
-   - Restart komputer setelah instalasi driver.
+### **GPU Not Detected:**
+   - Ensure the latest NVIDIA driver is installed.
+   - Verify that CUDA version 12.1 is installed correctly.
+   - Restart the computer after installing the driver.
 
 ---
 
-## **Dependencies yang Dibutuhkan**
+## **Required Dependencies**
    ```cmd
    tensorflow==2.10.0
    tensorrt
@@ -287,17 +290,17 @@ GUIDE
    ```
 ---
 
-## **Referensi**
+## **References**
    - [NVIDIA TensorRT Documentation](https://docs.nvidia.com/deeplearning/tensorrt/)
    - [TensorFlow GPU Support Guide](https://www.tensorflow.org/install/gpu)
    - [PyTorch to ONNX Conversion](https://pytorch.org/docs/stable/onnx.html)
 
 ---
 
-## **Kontribusi**
-Jika Anda menemukan masalah atau ingin berkontribusi, silakan buat *issue* atau *pull request*.
+## **Contributions**
+If you encounter any issues or wish to contribute, please create an *issue* or pull *request*.
 
-## **Lisensi**
+## **License**
 MIT License
 
 ---
