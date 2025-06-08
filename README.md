@@ -217,9 +217,9 @@ model.export(
 
 ## Dependencies yang Dibutuhkan
 ```cmd
-tensorflow==2.15.0
+tensorflow==2.10.0
 tensorrt
-numpy
+numpy==1.24.3
 opencv-python
 pillow
 protobuf==3.20.3
