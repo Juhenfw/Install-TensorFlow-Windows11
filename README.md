@@ -185,8 +185,19 @@ build_engine('model.onnx', 'model.engine')
 ```python
 from ultralytics import YOLO
 
-model = YOLO('yolov8n.pt')
-model.export(format='engine', device = 0)
+model = YOLO('yolo11s.pt')
+
+# Export dengan optimasi maksimal untuk speed
+model.export(
+    format='engine',
+    device=0,
+    half=True,           # FP16 precision untuk speed
+    batch=32,             # Batch size untuk throughput
+    workspace=4,         # Workspace memory (GB)
+    imgsz=640,          # Input size
+    verbose=False
+)
+
 ```
 
 ## Troubleshooting
