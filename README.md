@@ -1,4 +1,4 @@
-# **Install TensorFlow di Windows 11**
+# **Install TensorFlow on Windows 11**
 A guide to install TensorFlow on Windows 10 or later environments. This repository also explains how to convert PyTorch models (.pt) to TensorFlow models (.onnx & .engine).
 
 ## **Table of Contents**
