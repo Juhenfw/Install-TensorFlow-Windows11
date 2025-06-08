@@ -28,7 +28,7 @@ Panduan instalasi TensorFlow pada lingkungan Windows 10 atau di atasnya. Dalam r
 11. [Kontribusi](#kontribusi)
 12. [Lisensi](#lisensi)
 
---
+---
 
 ## **Spesifikasi pada Perangkat yang Saya Gunakan**
 - **OS**: Windows 11
