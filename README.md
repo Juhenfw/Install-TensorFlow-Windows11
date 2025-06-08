@@ -31,6 +31,13 @@ Panduan instalasi TensorFlow pada lingkungan Windows 10 atau di atasnya. Dalam r
      ```cmd
      C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v12.1\bin
      ```
+     Folder `lib`:
+     
+     <img src="https://github.com/Juhenfw/Install-TensorFlow-Windows11/blob/eb1f985b2469e691114e2bf0b7da88a01cc1ca94/pic/pathtensorrt.png" width="600" height="350">
+     
+     Direktori CUDA:
+     
+     <img src="https://github.com/Juhenfw/Install-TensorFlow-Windows11/blob/main/pic/pathcuda.png" width="600" height="400">
 
    - **Catatan**: Ini adalah metode yang lebih mudah daripada menambahkan *PATH environment variable* secara manual.
 
@@ -51,9 +58,15 @@ Panduan instalasi TensorFlow pada lingkungan Windows 10 atau di atasnya. Dalam r
 
 ### 2. **Instal TensorRT Python Package**
    - Navigasi ke folder TensorRT yang sudah di-extract, lalu masuk ke folder `python`.
+     
+     <img src="https://github.com/Juhenfw/Install-TensorFlow-Windows11/blob/main/pic/pythontensorrt.png" width="600" height="450">
    - Install file *wheel* TensorRT sesuai dengan versi Python Anda:
      ```cmd
      python.exe -m pip install tensorrt-*-cp310-none-win_amd64.whl
+     ```
+     Ganti `*` dengan versi TensorRT, misal:
+     ```cmd
+     python.exe -m pip install tensorrt-10.10.0.31-cp310-none-win_amd64.whl
      ```
 
    - **Opsional**: Install TensorRT lean dan dispatch runtime:
