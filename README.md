@@ -1,6 +1,35 @@
 # **Install TensorFlow di Windows 11**
 Panduan instalasi TensorFlow pada lingkungan Windows 10 atau di atasnya. Dalam repository ini juga akan dijelaskan cara mengonversi model PyTorch (.pt) ke model TensorFlow (.onnx & .engine).
 
+## **Daftar Isi**
+1. [Spesifikasi pada Perangkat yang Saya Gunakan](#spesifikasi-pada-perangkat-yang-saya-gunakan)
+2. [Langkah Awal: Instalasi TensorRT](#langkah-awal-instalasi-tensorrt)
+   - 1.1. [Unduh NVIDIA TensorRT](#unduh-nvidia-tensorrt)
+   - 1.2. [Extract File TensorRT](#extract-file-tensorrt)
+   - 1.3. [Copy DLL File ke CUDA Directory](#copy-dll-file-ke-cuda-directory)
+3. [Langkah Kedua: Install TensorRT Python Package](#langkah-kedua-install-tensorrt-python-package)
+   - 2.1. [Membuat Virtual Environment](#membuat-virtual-environment)
+   - 2.2. [Instal TensorRT Python Package](#instal-tensorrt-python-package)
+4. [Langkah Ketiga: Install TensorFlow](#langkah-ketiga-install-tensorflow)
+   - 3.1. [Install TensorFlow dengan GPU Support](#install-tensorflow-dengan-gpu-support)
+   - 3.2. [Downgrade NumPy (Opsional)](#downgrade-numpy-opsional)
+5. [Verifikasi Instalasi](#verifikasi-instalasi)
+   - 4.1. [Verifikasi TensorRT](#verifikasi-tensorrt)
+   - 4.2. [Verifikasi TensorFlow](#verifikasi-tensorflow)
+   - 4.3. [Verifikasi Dukungan GPU](#verifikasi-dukungan-gpu)
+6. [Konversi Model PyTorch ke TensorFlow](#konversi-model-pytorch-ke-tensorflow)
+   - 5.1. [Export PyTorch ke ONNX](#export-pytorch-ke-onnx)
+   - 5.2. [Konversi ONNX ke TensorRT Engine](#konversi-onnx-ke-tensorrt-engine)
+   - 5.3. [Konversi Langsung dari PyTorch ke TensorRT Engine](#konversi-langsung-dari-pytorch-ke-tensorrt-engine)
+7. [Troubleshooting](#troubleshooting)
+8. [Dependencies yang Dibutuhkan](#dependencies-yang-dibutuhkan)
+9. [Struktur Project](#struktur-project)
+10. [Referensi](#referensi)
+11. [Kontribusi](#kontribusi)
+12. [Lisensi](#lisensi)
+
+--
+
 ## **Spesifikasi pada Perangkat yang Saya Gunakan**
 - **OS**: Windows 11
 - **GPU**: NVIDIA RTX 4060 dengan versi driver terbaru
