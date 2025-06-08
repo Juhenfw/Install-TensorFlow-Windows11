@@ -1,7 +1,7 @@
 # Install TensorFlow di Windows 11
 Tutorial instalasi TensorFlow pada lingkungan Windows 10 atau di atasnya. Pada Repository ini juga akan dijelaskan terkait konversi dari model PyTorch (.pt) ke model TensorFlow (.onxx & .engine)
 
-## Spesifikasi Perangkat yang saya Gunakan
+## Spesifikasi pada Perangkat yang saya Gunakan
 - Windows 11
 - NVIDIA GPU RTX 4060 dengan versi driver terbaru
 - CUDA versi 12.1
