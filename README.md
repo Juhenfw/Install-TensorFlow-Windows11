@@ -93,15 +93,23 @@ A guide to install TensorFlow on Windows 10 or later environments. This reposito
      ```cmd
      python.exe -m pip install tensorrt-*-cp310-none-win_amd64.whl
      ```
-     Replace `*` with the TensorRT version, for example:
+     Replace `*` with the TensorRT version, for example with a complete directory of TensorRT locations:
      ```cmd
      python.exe -m pip install tensorrt-10.10.0.31-cp310-none-win_amd64.whl
+     ```
+     ```cmd
+     python.exe -m pip install C:\Users\YMPI\Downloads\TensorRT-10.10.0.31.Windows.win10.cuda-12.9\TensorRT-10.10.0.31\python\tensorrt-10.10.0.31-cp310-none-win_amd64.whl
      ```
 
    - **Optional**: Install TensorRT lean and dispatch runtime:
      ```cmd
      python.exe -m pip install tensorrt_lean--cp310-none-win_amd64.whl
      python.exe -m pip install tensorrt_dispatch--cp310-none-win_amd64.whl
+     ```
+     Or
+     ```cmd
+     python.exe -m pip install C:\Users\YMPI\Downloads\TensorRT-10.10.0.31.Windows.win10.cuda-12.9\TensorRT-10.10.0.31\python\tensorrt_lean--cp310-none-win_amd64.whl
+     python.exe -m pip install C:\Users\YMPI\Downloads\TensorRT-10.10.0.31.Windows.win10.cuda-12.9\TensorRT-10.10.0.31\python\tensorrt_dispatch--cp310-none-win_amd64.whl
      ```
 
 ---
