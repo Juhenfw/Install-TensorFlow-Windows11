@@ -95,6 +95,9 @@ Panduan instalasi TensorFlow pada lingkungan Windows 10 atau di atasnya. Dalam r
      ```
      Ganti `*` dengan versi TensorRT, misal dengan direktori lengkap letak TensorRT:
      ```cmd
+     python.exe -m pip install tensorrt-10.10.0.31-cp310-none-win_amd64.whl
+     ```
+     ```cmd
      python.exe -m pip install C:\Users\YMPI\Downloads\TensorRT-10.10.0.31.Windows.win10.cuda-12.9\TensorRT-10.10.0.31\python\tensorrt-10.10.0.31-cp310-none-win_amd64.whl
      ```
 
@@ -102,6 +105,11 @@ Panduan instalasi TensorFlow pada lingkungan Windows 10 atau di atasnya. Dalam r
      ```cmd
      python.exe -m pip install tensorrt_lean--cp310-none-win_amd64.whl
      python.exe -m pip install tensorrt_dispatch--cp310-none-win_amd64.whl
+     ```
+     Atau
+     ```cmd
+     python.exe -m pip install C:\Users\YMPI\Downloads\TensorRT-10.10.0.31.Windows.win10.cuda-12.9\TensorRT-10.10.0.31\python\tensorrt_lean--cp310-none-win_amd64.whl
+     python.exe -m pip install C:\Users\YMPI\Downloads\TensorRT-10.10.0.31.Windows.win10.cuda-12.9\TensorRT-10.10.0.31\python\tensorrt_dispatch--cp310-none-win_amd64.whl
      ```
 
 ---
